@@ -1,1 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>calculator App</title>
+     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+     <style>
+*{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+body{
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     width: 100vw;
+     background-color: coral;
+}
+.container{
+     width: 50%;
+     height: 450px;
+     border: 2px black solid;
+     border-top-left-radius: 15px;
+     border-bottom-right-radius: 15px;
+     background-color: black;
+}
+textarea{
+     width: 100%;
+     resize: none;
+     height: 55px;
+     border: gray 2px solid;
+     border-radius: 5px;
+     outline: none;
+     text-align: end;
+     font-size: 2em;
+     scroll-behavior:auto;
+     
+}
+h1{
+     text-align: center;
+}
+     </style>
+</head>
+<body>
+     <div class="container">
+          <h1 class=" text-uppercase text-primary ">calc</h1>
+          <textarea name="" id="txtarea" cols="60" rows="5"></textarea>
+          <div class="row my-3 gx-2">
+               
+               <div class="col btn btn-warning mx-2" onclick="clearall()">AC</div>
+               <div class="col btn btn-light  mx-2" onclick="clearall()"><-</div>
+               <div class="col btn btn-light  mx-2" onclick="valcalc()">+/-</div>
+               <div class="col btn btn-light  mx-2" onclick="valcalc('/')">/</div>
+          </div>
+          <div class="row my-3 gx-2">
+               <div class="col btn btn-light  mx-2"  id="seven" onclick="valcalc(7)">7</div>
+               <div class="col btn btn-light  mx-2"  id="eight" onclick="valcalc(8)">8</div>
+               <div class="col btn btn-light  mx-2"  id="nine" onclick="valcalc(9)">9</div>
+               <div class="col btn btn-light  mx-2"  id="multipe" onclick="valcalc('x')">x</div>
+          </div>
+          <div class="row my-3 gx-2">
+               <div class="col btn btn-light  mx-2"  id="four" onclick="valcalc(4)">4</div>
+               <div class="col btn btn-light  mx-2"  id="five" onclick="valcalc(5)">5</div>
+               <div class="col btn btn-light  mx-2"  id="six" onclick="valcalc(6)">6</div>
+               <div class="col btn btn-light  mx-2"  id="sub" onclick="valcalc('-')">-</div>
+          </div>
+          <div class="row my-3 gx-2">
+               <div class="col btn btn-light  mx-2"  id="one" onclick="valcalc(1)">1</div>
+               <div class="col btn btn-light  mx-2"  id="two" onclick="valcalc(2)">2</div>
+               <div class="col btn btn-light  mx-2" id="three" onclick="valcalc(3)">3</div>
+              <button class="col btn btn-light  mx-2" id="plus" onclick="valcalc('+')">+</button>
+          </div>
+          <div class="row my-3 gx-2">
+               <div class="col btn btn-light  mx-2 " onclick="valcalc('%')">%</div>
+               <div class="col btn btn-light  mx-2" onclick="valcalc(0)">0</div>
+               <div class="col btn btn-light  mx-2" onclick="valcalc('.')">.</div>
+               <div class="col btn btn-primary border  mx-2" onclick="eqcalc()" id="equal" >=</div>
+          </div>
+     </div>
+     <script> 
+     function valcalc(val)
+     {
+         var values= document.getElementById("txtarea").value = document.getElementById("txtarea").value+val;
+     } 
 
+    function clearall()
+    {
+    let clear =  document.getElementById("txtarea").value ='';
+    }
+   
+    function eqcalc()
+    {
+       values= document.getElementById("txtarea").value = document.getElementById("txtarea").value;
+        if(values.includes('+'))
+        {
+           var sp=  values.split('+')
+           var f1 = Number(sp[0]);
+           var f2 = Number(sp[1]);
+          let result = f1+f2;   
+          document.getElementById("txtarea").value = result;
+        }
+       else if(values.includes('-'))
+       {
+           sp = values.split('-');
+           var f1 = sp[0];
+          var f2 = sp[1];
+          let result = f1-f2; 
+          document.getElementById("txtarea").value = result;
+       }
+      else if(values.includes('x'))
+     {
+     sp = values.split('x');
+     var f1 = sp[0];
+     var f2 = sp[1];
+     let result = f1*f2;
+     document.getElementById("txtarea").value = result;
+    }
+    else if(values.includes('/'))
+    {
+    sp = values.split('/');
+    var f1 = sp[0];
+    var f2 = sp[1];
+    let result = f1/f2;
+   document.getElementById("txtarea").value = result;
+    }
+    else if(values.includes('%')){
+    sp = values.split('%');
+    var f1 = sp[0];
+    var f2 = sp[1];
+    let result = f1/f2;
+   document.getElementById("txtarea").value = result;
+    }
+    else {
+     clearall()
+    }
+    
+}       
+</script>
+</body>
+</html>
